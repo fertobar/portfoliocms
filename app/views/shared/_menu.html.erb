@@ -1,0 +1,10 @@
+<div id="menu-wrap">
+<div id="menu">
+	<ul>
+	  <%@sections.each do |section|%>
+	    <li class="<%= section == @section ? 'first' : '' %>"> <%= link_to section.title, home_path(section) %> </li>
+      <%end%>
+	</ul>
+</div>
+</div>
+<hr />

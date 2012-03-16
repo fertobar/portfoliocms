@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%=TITLE%></title>
+  <%= stylesheet_link_tag    "home", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	
+<div id="header">
+<div id="logo">
+	<h1><a href="#{TITLE_HREF}"><%=TITLE%></a></h1>
+	<h2><%=SUB_TITLE%></h2>
+</div>
+</div>
+
+<!-- menu init -->
+<%= render "/shared/menu" %>
+<!-- menu end -->
+
+<%= yield %>
+
+<hr />
+
+<div id="footer">
+  <p class="legal"><%=LEGAL_NOTICE.html_safe%></p>
+</div>
+
+</body>
+</html>

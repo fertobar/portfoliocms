@@ -1,0 +1,39 @@
+<%@section.posts.normal.each do |post|%>
+  <div id="latest-post-wrap">
+    <div id="latest-post" class="post">
+	  <p class="byline"><span><%=@section.subtitle.html_safe%></span></p>
+	  <h1 class="title"><a href="#"><%=post.title.html_safe%></a></h1>
+	  <div class="entry">	
+	  	<%= image_tag post.paperclip_asset.url(:medium), class: 'left' if post.paperclip_asset %>
+  		 <%=post.text.html_safe%>
+	  </div>
+    </div>
+  </div>
+<%end%>
+<%if @section.posts.item.any?%>
+<div id="content">
+  <div id="recent-posts">
+
+	<h2><%=@section.subtitle%></h2>
+	<ul>
+	<%@section.posts.item.each_with_index do |post,i|%>
+		<li class="<%= ((i % 3) == 0) ? 'first' : '' %>">
+			<h3><a href="#" ><%=post.title.html_safe%></a></h3>
+			<p class="byline"><span><%=post.subtitle.html_safe%></span></p>
+			<%=post.text.html_safe%>
+		</li>
+	<%if (((i + 1) % 3) == 0) %>
+	</ul>
+	<div style="clear: both; ">&nbsp;</div>
+	 <!-- new item groups -->
+	<ul>
+	<%end%> 	
+    <%end%> 
+	</ul>
+
+	<div style="clear: both; height: 50px;">&nbsp;</div>
+
+  </div>
+
+</div>
+<%end%>
